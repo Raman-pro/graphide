@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IDE to Agent Runtime Request",
+    "type": "object",
+    "properties": {
+        "intent": {
+            "type": "string",
+            "description": "High-level user intent (e.g., 'explain', 'refactor', 'scan')."
+        },
+        "filePath": {
+            "type": "string",
+            "description": "Absolute path to the active file."
+        },
+        "codeRange": {
+            "type": "object",
+            "properties": {
+                "startLine": {
+                    "type": "integer"
+                },
+                "endLine": {
+                    "type": "integer"
+                },
+                "startColumn": {
+                    "type": "integer"
+                },
+                "endColumn": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "startLine",
+                "endLine"
+            ]
+        },
+        "language": {
+            "type": "string",
+            "description": "Language identifier (e.g., 'typescript', 'python')."
+        },
+        "userQuery": {
+            "type": "string",
+            "description": "Optional natural language query from the user."
+        }
+    },
+    "required": [
+        "intent",
+        "filePath",
+        "language"
+    ]
+}
